@@ -271,6 +271,9 @@ const outboxes = mailboxes.outboxes ? Array.from(mailboxes.outboxes) : ["wss://n
 
 const routeIds = hops.reduce<string[]>((arr, hop) => [...arr, hop.id!], []);
 const routeRelays = hops.reduce<string[]>((arr, hop) => [...arr, hop.relay!], []);
+
+// add the original event
+routeIds.push(event.id);
 for (const r of outboxes) routeRelays.push(r);
 
 // trace route
@@ -310,4 +313,4 @@ if (firstHop.inboxes) {
 }
 
 console.log(`Published onion ${onion.id}`);
-console.log("Waiting for note to be published...");
+console.log("Tracing onion...");
