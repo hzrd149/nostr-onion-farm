@@ -203,7 +203,7 @@ while (true) {
 
   hops.push({
     pubkey: next.pubkey,
-    token: getEncodedToken({ token: [{ proofs: fee, mint: mint.mintUrl }] }),
+    token: getEncodedToken({ token: [{ proofs: fee, mint: mint.mintUrl }], unit: "sat" }),
     fee: next.fee,
     relay,
     expiration: timeout,
